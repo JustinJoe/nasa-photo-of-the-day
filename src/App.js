@@ -1,13 +1,20 @@
-import React from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import "../node_modules/bulma/css/bulma.css";
+import fetchData from "./api";
+import Header from "./components/Header";
+import ImageShow from "./components/ImageShow";
 
 function App() {
+  const [nasaData, setNasaData] = useState({});
+  
+useEffect(() => {
+  fetchData().then(response => setNasaData(response))
+}, [])
+
   return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+    <div className="container">
+      <Header />
+      <ImageShow data={nasaData} />
     </div>
   );
 }
