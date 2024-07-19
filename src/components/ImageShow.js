@@ -16,7 +16,7 @@ const ImageShow = ({data}) => {
             <br />
             <time dateTime={data.date}>{data.date}</time>
             <br />
-            <small>Copyright: {data.copyright}</small>
+            {data.copyright && <small>Copyright: {data.copyright}</small>}
             </div>
         </div>
         </div>
